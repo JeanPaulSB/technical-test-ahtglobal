@@ -1,0 +1,46 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: AHTGlobal
+      MYSQL_DATABASE: inventory
+      MYSQL_USER: jeanpaulsb
+      MYSQL_PASSWORD: AHTGlobal25$!2.
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal_network
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_RUN_PORT=8000
+      - DB_USER=jeanpaulsb
+      - DB_PASSWORD=AHTGlobal25$!2.
+      - DB_NAME=inventory
+      - DB_HOST=db
+      - DB_PORT=3306
+    
+    command: ["poetry", "run","flask","--app","app","run","--host=0.0.0.0"]
+    depends_on:
+      - db
+    networks:
+      - internal_network
+
+volumes:
+  mysql_data:
+networks:
+  internal_network:
+    driver: bridge

@@ -32,8 +32,19 @@ services:
       - DB_NAME=inventory
       - DB_HOST=db
       - DB_PORT=3306
-    
-    command: ["poetry", "run","flask","--app","app","run","--host=0.0.0.0", "--debug"]
+    volumes: ["./:/app"]
+
+    command:
+      [
+        "poetry",
+        "run",
+        "flask",
+        "--app",
+        "app",
+        "run",
+        "--host=0.0.0.0",
+        "--debug",
+      ]
     depends_on:
       - db
     networks:

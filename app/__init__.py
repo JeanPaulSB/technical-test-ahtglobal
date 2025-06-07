@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask,render_template
+from flask import Flask, render_template, redirect, url_for, request
 from .database import init_db, db_session
 from .models import Product
 
@@ -12,11 +12,10 @@ def create_app(test_config=None):
 
     init_db()
 
-    @app.route("/")
-    def home():
-        logging.debug(Product.query.all())
-        logging.debug("hey")
-        return render_template("crud/list.html")
+    from . import inventory
+    app.register_blueprint(inventory.bp)
+    app.add_url_rule('/', endpoint='index')
+
 
     @app.teardown_appcontext
     def shutdown_session(exception=None):

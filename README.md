@@ -77,12 +77,12 @@ docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/test_inventor
 
 ## 📝 API Endpoints
 
-| Method   | Endpoint       | Description          |
-| -------- | -------------- | -------------------- |
-| GET      | `/`            | List all devices     |
-| GET/POST | `/add`         | Add new device       |
-| GET/POST | `/edit/<id>`   | Edit existing device |
-| GET/POST | `/delete/<id>` | Delete device        |
+| Method   | Endpoint       | Description    |
+| -------- | -------------- | -------------- |
+| GET      | `/`            | List all items |
+| GET/POST | `/add`         | Add new item   |
+| GET/POST | `/edit/<id>`   | Edit item      |
+| GET/POST | `/delete/<id>` | Delete item    |
 
 ## 🔒 Data Validation
 
@@ -93,22 +93,22 @@ docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/test_inventor
 ### Product Listing
 
 ![Product Listing](https://i.imgur.com/cUl2CcM.png)
-_Main interface showing the list of devices with actions for edit and delete_
+_Main interface showing the list of items with actions for edit and delete_
 
 ### Edit Product
 
 ![Edit Product](https://i.imgur.com/P7u2A9e.png)
-_Edit interface for updating device information with form validation_
+_Edit interface for updating item information with form validation_
 
 ### Delete Confirmation
 
 ![Delete Product](https://i.imgur.com/6oAMYax.png)
-_Safety confirmation dialog before removing a device from inventory_
+_Safety confirmation dialog before removing a item from inventory_
 
 ### Error Handling
 
 ![404 Not Found](https://i.imgur.com/hnNN47T.png)
-_Custom 404 error page when attempting to access non-existent devices_
+_Custom 404 error page when attempting to access non-existent items_
 
 ## 👤 Author
 

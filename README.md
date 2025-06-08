@@ -1,7 +1,8 @@
 # technical-test-ahtglobal
 
 ## 🎯 Project's main features
-- CRUD operations 
+
+- CRUD operations
 - Data validation for unique identifiers
 - Error handling and logging
 - Unit + integration tests with pytest
@@ -10,6 +11,7 @@
 - Blueprint-based routing
 
 ## 🏗 Project Structure
+
 ```
 technical-test-ahtglobal/
 ├── app/
@@ -41,6 +43,7 @@ technical-test-ahtglobal/
 ```
 
 ## 🛠 Tech Stack
+
 - **Framework**: Flask
 - **Database**: MySQL + SQLAlchemy
 - **Testing**: pytest + unittest.mock
@@ -49,12 +52,21 @@ technical-test-ahtglobal/
 - **Logging**: Python's built-in logging module
 
 ## 🚀 Getting Started
+
 Spinning up the containers with:
+
 ```
 docker-compose up --build -d
 ```
 
+Then go to
+
+```
+http://localhost:8000
+```
+
 ## 🧪 Running Tests
+
 ```bash
 # Run all tests
 docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/ -v
@@ -65,30 +77,39 @@ docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/test_inventor
 
 ## 📝 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | List all devices |
-| GET/POST | `/add` | Add new device |
-| GET/POST | `/edit/<id>` | Edit existing device |
-| GET/POST | `/delete/<id>` | Delete device |
+| Method   | Endpoint       | Description          |
+| -------- | -------------- | -------------------- |
+| GET      | `/`            | List all devices     |
+| GET/POST | `/add`         | Add new device       |
+| GET/POST | `/edit/<id>`   | Edit existing device |
+| GET/POST | `/delete/<id>` | Delete device        |
 
 ## 🔒 Data Validation
+
 - Unique MAC addresses
 - Unique serial numbers
 - Proper error handling for duplicates
 
 ### Product Listing
+
 ![Product Listing](https://i.imgur.com/cUl2CcM.png)
-*Main interface showing the list of devices with actions for edit and delete*
+_Main interface showing the list of devices with actions for edit and delete_
+
 ### Edit Product
+
 ![Edit Product](https://i.imgur.com/P7u2A9e.png)
-*Edit interface for updating device information with form validation*
+_Edit interface for updating device information with form validation_
+
 ### Delete Confirmation
+
 ![Delete Product](https://i.imgur.com/6oAMYax.png)
-*Safety confirmation dialog before removing a device from inventory*
+_Safety confirmation dialog before removing a device from inventory_
+
 ### Error Handling
+
 ![404 Not Found](https://i.imgur.com/hnNN47T.png)
-*Custom 404 error page when attempting to access non-existent devices*
+_Custom 404 error page when attempting to access non-existent devices_
 
 ## 👤 Author
+
 Jean Paul Sierra Boom

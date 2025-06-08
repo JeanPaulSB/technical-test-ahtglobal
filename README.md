@@ -4,7 +4,7 @@
 - CRUD operations 
 - Data validation for unique identifiers
 - Error handling and logging
-- Unit tests with pytest
+- Unit + integration tests with pytest
 - Docker containerization
 - SQLAlchemy ORM integration
 - Blueprint-based routing

@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Inventory</h1>
+<a href="{{ url_for('inventory.create')}}" class="btn btn-primary btn-sm mb-2">Add new product</a>
 <table class="table table-sm table-bordered">
   <thead>
     <tr>
@@ -21,8 +22,8 @@
             <td> {{product.manufacturer}}</td>
             <td> {{product.description}}</td>
             <td>
-                <button type="button" class="btn btn-sm btn-warning">Edit</button>
-                <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                <a href="{{ url_for('inventory.edit', id=product.id)}}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{{url_for('inventory.delete', id=product.id)}}" class="btn btn-sm btn-danger">Delete</a>
             </td>
             
         </tr>

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container"></div>
+    <h1>Edit Item</h1>
+    <form action="{{ url_for('inventory.edit', id=product.id)}}" method="POST">
+        <div class="form-group mb-3">
+          <div class="form-group mb-3">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter product's name"
+            required
+            value = {{product.name}}
+          />
+        </div>
+        
+    
+        <div class="form-group mb-3">
+          <label for="macAddress">MAC Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mac_address"
+            name="mac_address"
+            placeholder="Enter product's MAC address i.e 00-B0-D0-63-C2-26"
+            required
+            value = {{product.mac_address}}
+          />
+        </div>
+    
+        <div class="form-group mb-3">
+          <label for="serialNumber">Serial number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="serial_number"
+            name="serial_number"
+            placeholder="Enter product's serial number"
+            required
+            value = {{product.serial_number}}
+          />
+        </div>
+    
+        <div class="form-group mb-3">
+          <label for="manufacturer">Manufacturer</label>
+          <input
+            type="text"
+            class="form-control"
+            id="manufacturer"
+            name="manufacturer"
+            placeholder="Enter product's manufacturer"
+            required
+            value = {{product.manufacturer}}
+          />
+        </div>
+    
+        <div class="form-group mb-3">
+          <label for="description">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            rows="3"
+            required
+         >{{product.description}}
+        </textarea>
+        </div>
+    
+        <a href="{{url_for('inventory.home')}}" class="btn btn-danger">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}

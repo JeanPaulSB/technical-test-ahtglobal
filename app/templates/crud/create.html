@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container w-50 mx-auto mt-5">
-  <form action="{{ url_for('inventory.add')}}" method="POST">
+  <form class="bg-light p-4 rounded" action="{{ url_for('inventory.add')}}" method="POST">
     <h1>Add product</h1>
     <div class="form-group mb-3">
       <label for="name">Name</label>
@@ -72,6 +72,11 @@
         rows="3"
         required
       ></textarea>
+      {% if error %}
+      <div class="alert alert-danger mt-2" role="alert">
+        <p>MAC Address and Serial Number must be unique.</p>
+      </div>
+      {% endif %}
     </div>
     <a href="{{url_for('inventory.home')}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>

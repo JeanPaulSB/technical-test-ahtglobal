@@ -1,5 +1,6 @@
 import logging
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for
+from sqlalchemy.exc import IntegrityError
 from .database import db_session
 from .models import Product
 
@@ -31,9 +32,15 @@ def add():
             manufacturer=manufacturer,
             description=description,
         )
-        db_session.add(product)
-        db_session.commit()
-        return redirect(url_for("inventory.home"))
+        try:
+            db_session.add(product)
+            db_session.commit()
+            return redirect(url_for("inventory.home"))
+        except IntegrityError:
+            return render_template(
+                "crud/create.html",
+                error="That MAC Address and/or serial number are duplicated.",
+            )
     return render_template("crud/create.html")
 
 

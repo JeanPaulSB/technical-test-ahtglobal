@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Inventory</h1>
-<a href="{{ url_for('inventory.create')}}" class="btn btn-primary btn-sm mb-2">Add new product</a>
+<a href="{{ url_for('inventory.add')}}" class="btn btn-primary btn-sm mb-2">Add new product</a>
 <table class="table table-sm table-bordered">
   <thead>
     <tr>
       <th>Id</th>
       <th>Name</th>
+      <th>Price</th>
       <th>MAC Address</th>
       <th>Serial number</th>
       <th>Manufacturer</th>
@@ -17,6 +18,7 @@
         <tr>
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
+            <td>{{product.price}}</td>
             <td> {{product.mac_address}}</td>
             <td> {{product.serial_number}}</td>
             <td> {{product.manufacturer}}</td>

@@ -46,7 +46,9 @@ services:
         "--debug",
       ]
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
     networks:
       - internal_network
 

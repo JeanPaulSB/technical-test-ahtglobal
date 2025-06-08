@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container"></div>
-    <h1>Edit Item</h1>
-    <form action="{{ url_for('inventory.edit', id=product.id)}}" method="POST">
+ 
+    <form action="{{ url_for('inventory.edit', id=product.id)}}" class="w-50 mx-auto" method="POST">
+      <h1>Edit Item</h1>
         <div class="form-group mb-3">
           <div class="form-group mb-3">
           <label for="name">Name</label>
@@ -14,6 +15,19 @@
             placeholder="Enter product's name"
             required
             value = {{product.name}}
+          />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="price">Price</label>
+          <input
+            type="value"
+            class="form-control"
+            id="price"
+            name="price"
+            placeholder="Enter product's price"
+            required
+            value = {{product.price}}
           />
         </div>
         

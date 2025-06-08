@@ -53,7 +53,7 @@ technical-test-ahtglobal/
 
 ## 🚀 Getting Started
 
-Spinning up the containers with:
+Spin up the containers with:
 
 ```
 docker-compose up --build -d

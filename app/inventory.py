@@ -1,5 +1,5 @@
 import logging
-from flask import Blueprint, flash, g, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, abort
 from sqlalchemy.exc import IntegrityError
 from .database import db_session
 from .models import Product
@@ -9,9 +9,15 @@ bp = Blueprint("inventory", __name__)
 logging.basicConfig(level=logging.DEBUG)
 
 
+@bp.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+
 @bp.route("/", methods=["GET", "POST"])
 def home():
     products = Product.query.all()
+    logging.info("Showing all the products in the inventory")
     return render_template("crud/list.html", products=products)
 
 
@@ -35,33 +41,40 @@ def add():
         try:
             db_session.add(product)
             db_session.commit()
+            logging.info(f"Product {name} added!")
             return redirect(url_for("inventory.home"))
         except IntegrityError:
-            return render_template(
-                "crud/create.html",
-                error="That MAC Address and/or serial number are duplicated.",
+            logging.error(
+                f"Duplited MAC Address {mac_address} or Serial number {serial_number}"
+            )
+            return (
+                render_template(
+                    "crud/create.html",
+                    error="That MAC Address and/or serial number are duplicated.",
+                ),
+                409,
             )
     return render_template("crud/create.html")
 
 
 @bp.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete(id):
+    product = db_session.get(Product, id)
+    if product == None:
+        abort(404)
     if request.method == "POST":
-        id = request.form["id"]
-        product = Product.query.get(id)
-        logging.info(product)
-        if product:
-            db_session.delete(product)
-            db_session.commit()
-            return redirect(url_for("inventory.home"))
-
-    product = Product.query.get(id)
+        db_session.delete(product)
+        db_session.commit()
+        logging.info(f"Product {product.name} has been deleted")
+        return redirect(url_for("inventory.home"))
     return render_template("crud/delete.html", product=product)
 
 
 @bp.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
-    product = Product.query.get(id)
+    product = db_session.get(Product, id)
+    if product == None:
+        abort(404)
     if request.method == "POST":
         product.name = request.form["name"]
         product.price = request.form["price"]
@@ -70,5 +83,6 @@ def edit(id):
         product.manufacturer = request.form["manufacturer"]
         product.description = request.form["description"]
         db_session.commit()
+        logging.info(f"Product {product.name} has been edited")
         return redirect(url_for("inventory.home"))
     return render_template("crud/edit.html", product=product)

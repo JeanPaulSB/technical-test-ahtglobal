@@ -17,11 +17,12 @@
     <div class="form-group mb-3">
       <label for="price">Price</label>
       <input
-        type="value"
+        type="number"
         class="form-control"
         id="price"
         name="price"
         placeholder="Enter product's price"
+        min="1"
         required
       />
     </div>
@@ -34,7 +35,9 @@
         class="form-control"
         id="mac_address"
         name="mac_address"
-        placeholder="Enter product's MAC address i.e 00-B0-D0-63-C2-26"
+        pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+        title="MAC address must be in the format XX:XX:XX:XX:XX:XX"
+        placeholder="Enter product's MAC address i.e 00:B0:D0:63:C2:26"
         required
       />
     </div>

@@ -75,7 +75,20 @@ docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/test_inventor
 ## 🔒 Data Validation
 - Unique MAC addresses
 - Unique serial numbers
-- Required fields: name, price, manufacturer
 - Proper error handling for duplicates
+
+### Product Listing
+![Product Listing](https://i.imgur.com/cUl2CcM.png)
+*Main interface showing the list of devices with actions for edit and delete*
+### Edit Product
+![Edit Product](https://i.imgur.com/P7u2A9e.png)
+*Edit interface for updating device information with form validation*
+### Delete Confirmation
+![Delete Product](https://i.imgur.com/6oAMYax.png)
+*Safety confirmation dialog before removing a device from inventory*
+### Error Handling
+![404 Not Found](https://i.imgur.com/hnNN47T.png)
+*Custom 404 error page when attempting to access non-existent devices*
+
 ## 👤 Author
 Jean Paul Sierra Boom

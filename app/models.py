@@ -6,10 +6,10 @@ class Product(Base):
     __tablename__ = "inventory"
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
-    price = Column(Float)
-    mac_address = Column(String(100), unique=True)
-    serial_number = Column(String(100), unique=True)
-    manufacturer = Column(String(100))
+    price = Column(Float, nullable=False)
+    mac_address = Column(String(100), unique=True, nullable=False)
+    serial_number = Column(String(100), unique=True, nullable=False)
+    manufacturer = Column(String(100), nullable=False)
     description = Column(Text)
 
     def __init__(

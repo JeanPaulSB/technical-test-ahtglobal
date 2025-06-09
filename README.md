@@ -92,8 +92,13 @@ docker exec technical-test-ahtglobal-web-1 poetry run pytest tests/test_inventor
 
 ### Product Listing
 
-![Product Listing](https://i.imgur.com/cUl2CcM.png)
+![Product Listing](https://i.imgur.com/EtqdAdI.png)
 _Main interface showing the list of items with actions for edit and delete_
+
+### Create product
+
+![Product Listing](https://i.imgur.com/cUl2CcM.png)
+_Interface showing the product's form_
 
 ### Edit Product
 
